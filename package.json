@@ -15,7 +15,11 @@
         "ts",
         "clean",
         "watch",
-        "clear"
+        "clear",
+        "delete",
+        "remove",
+        "unlink",
+        "CLI"
     ],
     "author": "Tar van Krieken",
     "license": "MIT",
@@ -24,6 +28,7 @@
     },
     "homepage": "https://github.com/TarVK/ts-cleaner#readme",
     "dependencies": {
+        "args": "^5.0.1",
         "chokidar": "^3.0.0"
     }
 }
