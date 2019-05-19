@@ -2,6 +2,8 @@
 
 A simple script that can be used to cleanup previously transpiled typescript files. When typescript is setup to transpile files from a source to distribution folder, it won't automatically remove distribution fils when their source file is deleted. ts-cleaner can take care of this task for you, both in single time build mode, or in watch mode.
 
+Npm: [ts-cleaner](https://www.npmjs.com/package/ts-cleaner)
+
 ## Example
 
 ```
