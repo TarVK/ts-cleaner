@@ -18,7 +18,7 @@ concurrently "tsc --watch" "npx ts-cleaner --watch"
 ## Options
 
 ```
- Usage: ts cleaner [options] [command]
+ Usage: ts-cleaner [options] [command]
 
   Commands:
     help     Display help
