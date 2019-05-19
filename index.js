@@ -1,32 +1,7 @@
-const Args = require("args");
+#!/usr/bin/env node
 const chokidar = require("chokidar");
 const Path = require("path");
 const fs = require("fs");
-
-// Define the arguments
-Args.options([
-    {
-        name: "src",
-        description: "The source folder with ts files",
-        defaultValue: "src",
-    },
-    {
-        name: "dist",
-        description: "The distribution folder with js files",
-        defaultValue: "dist",
-    },
-    {
-        name: "watch",
-        description: "Whether to watch for files being deleted",
-        defaultValue: false,
-    },
-    {
-        name: "verbose",
-        description: "Whether to show messages for files being deleted",
-        defaultValue: false,
-    },
-]);
-const args = Args.parse(process.argv);
 
 const srcTypePattern = /^(.*)\.ts$/;
 const distTypePattern = /^(.*)\.d\.ts$/;
@@ -102,13 +77,3 @@ exports.clean = function(src, dist, verbose) {
 
     if (verbose) console.log(`Cleaned "${dist}"`);
 };
-
-// Get the source and distribution folders
-const src = Path.resolve(process.cwd(), args.src);
-const dist = Path.resolve(process.cwd(), args.dist);
-
-// Clean the directory
-if (module.parent == null) exports.clean(src, dist, args.verbose);
-
-// Check whether we should continue checking for chnages
-if (args.watch) exports.watch(src, dist, args.verbose);

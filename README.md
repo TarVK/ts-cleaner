@@ -5,11 +5,11 @@ A simple script that can be used to cleanup previously transpiled typescript fil
 ## Example
 
 ```
-tsc && npx ts-cleaner
+tsc && ts-cleaner
 ```
 
 ```
-concurrently "tsc --watch" "npx ts-cleaner --watch"
+concurrently "tsc --watch" "ts-cleaner --watch"
 ```
 
 -   [TypeScript](https://www.npmjs.com/package/typescript)

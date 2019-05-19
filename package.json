@@ -1,10 +1,13 @@
 {
     "name": "ts-cleaner",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "description": "Cleans a distribution directory by removing distribution files of deleted source files",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "bin": {
+        "ts-cleaner": "./bin/ts-cleaner.js"
     },
     "repository": {
         "type": "git",
