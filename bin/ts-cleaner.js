@@ -16,6 +16,12 @@ Args.options([
         defaultValue: "dist",
     },
     {
+        name: "ifDeclared",
+        description:
+            "If set to true, js files in dist will only be removed if a file with the same name and a .d.ts extension is also present",
+        defaultValue: false,
+    },
+    {
         name: "watch",
         description: "Whether to watch for files being deleted",
         defaultValue: false,
@@ -33,7 +39,7 @@ const src = Path.resolve(process.cwd(), args.src);
 const dist = Path.resolve(process.cwd(), args.dist);
 
 // Clean the directory
-tsCleaner.clean(src, dist, args.verbose);
+tsCleaner.clean(src, dist, args.ifDeclared, args.verbose);
 
 // Check whether we should continue checking for chnages
 if (args.watch) tsCleaner.watch(src, dist, args.verbose);

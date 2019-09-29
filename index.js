@@ -5,8 +5,14 @@ const fs = require("fs");
 
 const srcTypePattern = /^(.*)\.ts$/;
 const distTypePattern = /^(.*)\.d\.ts$/;
+const distTypeJsPattern = /^(.*)\.js$/;
 
-// Define the watcher function
+/**
+ * Watches a folder for file removal
+ * @param {string} src The source folder to observe
+ * @param {string} dist The distribution folder to mirror deletions of ts files to
+ * @param {boolean} verbose Whether or not to print messages in the console about deletions
+ */
 exports.watch = function(src, dist, verbose) {
     chokidar
         .watch(src, {
@@ -30,8 +36,14 @@ exports.watch = function(src, dist, verbose) {
     if (verbose) console.log(`Watching in "${src}"`);
 };
 
-// Define the clean function
-exports.clean = function(src, dist, verbose) {
+/**
+ * Removes js files from the folder if no ts file exists for them anymore
+ * @param {string} src The source folder that should contain the ts files
+ * @param {string} dist The distribution folder to remove files from if not present in the source folder
+ * @param {boolean} ifTsDecl Whether or not to only remove a js file, if a .d.ts file is also present
+ * @param {booleanp} verbose Whether or not to print message in the console about deletions
+ */
+exports.clean = function(src, dist, ifTsDecl, verbose) {
     // Define a recursive method for scanning and cleaning a directory
     const readDir = dirPath => {
         // Get and read the files in the directory
@@ -44,7 +56,7 @@ exports.clean = function(src, dist, verbose) {
                 readDir(path);
             } else {
                 // Otherwise, check if it is a ts fist file
-                const match = path.match(distTypePattern);
+                const match = path.match(ifTsDecl ? distTypePattern : distTypeJsPattern);
                 if (match) {
                     const extLess = match[1].substring(0, match[1].length);
                     const relPath = extLess.substring(dist.length);
