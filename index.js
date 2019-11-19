@@ -27,7 +27,7 @@ exports.watch = function(src, dist, verbose) {
 
                 if (fs.existsSync(path + ".js")) fs.unlink(path + ".js", () => {});
                 if (fs.existsSync(path + ".js.map"))
-                    fs.unlink(path + ".js.map", () => {});
+                    fs.unlinkSync(path + ".js.map", () => {});
                 if (fs.existsSync(path + ".d.ts")) fs.unlink(path + ".d.ts", () => {});
 
                 if (verbose) console.log(`Removed "${match[1]}" from dist`);
@@ -71,11 +71,11 @@ exports.clean = function(src, dist, ifTsDecl, verbose) {
                         )
                     ) {
                         if (fs.existsSync(extLess + ".js"))
-                            fs.unlink(extLess + ".js", () => {});
+                            fs.unlinkSync(extLess + ".js");
                         if (fs.existsSync(extLess + ".js.map"))
-                            fs.unlink(extLess + ".js.map", () => {});
+                            fs.unlinkSync(extLess + ".js.map");
                         if (fs.existsSync(extLess + ".d.ts"))
-                            fs.unlink(extLess + ".d.ts", () => {});
+                            fs.unlinkSync(extLess + ".d.ts");
 
                         if (verbose) console.log(`Removed "${relPath}" from dist`);
                     }
