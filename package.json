@@ -1,6 +1,6 @@
 {
     "name": "ts-cleaner",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Cleans a distribution directory by removing distribution files of deleted source files",
     "main": "index.js",
     "scripts": {

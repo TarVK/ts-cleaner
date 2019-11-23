@@ -26,8 +26,7 @@ exports.watch = function(src, dist, verbose) {
                 path = Path.resolve(dist, match[1]);
 
                 if (fs.existsSync(path + ".js")) fs.unlinkSync(path + ".js");
-                if (fs.existsSync(path + ".js.map"))
-                    fs.unlinkSync(path + ".js.map");
+                if (fs.existsSync(path + ".js.map")) fs.unlinkSync(path + ".js.map");
                 if (fs.existsSync(path + ".d.ts")) fs.unlinkSync(path + ".d.ts");
 
                 if (verbose) console.log(`Removed "${match[1]}" from dist`);
