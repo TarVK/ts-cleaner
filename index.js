@@ -20,7 +20,7 @@ exports.watch = function(src, dist, verbose) {
             cwd: src,
         })
         .on("unlink", path => {
-            // Check if it was a type file
+            // Check if it was a typescript file
             const match = path.match(srcTypePattern);
             if (match) {
                 path = Path.resolve(dist, match[1]);
@@ -55,7 +55,7 @@ exports.clean = function(src, dist, ifTsDecl, verbose) {
             if (fs.existsSync(path) && fs.lstatSync(path).isDirectory()) {
                 readDir(path);
             } else {
-                // Otherwise, check if it is a ts fist file
+                // Otherwise, check if it is a ts dist file
                 const match = path.match(ifTsDecl ? distTypePattern : distTypeJsPattern);
                 if (match) {
                     const extLess = match[1].substring(0, match[1].length);
